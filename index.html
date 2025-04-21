@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Kalkulator Zakat Penghasilan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      padding: 20px;
+    }
+    .zakat-box {
+      background: white;
+      padding: 20px;
+      max-width: 300px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+    input, select, button {
+      margin-top: 8px;
+      width: 100%;
+      padding: 8px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    button {
+      background: #28a745;
+      color: white;
+      border: none;
+      margin-top: 12px;
+      cursor: pointer;
+    }
+    #hasilZakat {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="zakat-box">
+  <h3>Kalkulator Zakat</h3>
+
+  <label for="period">Pilih Periode:</label>
+  <select id="period">
+    <option value="bulanan">Bulanan</option>
+    <option value="tahunan">Tahunan</option>
+  </select>
+
+  <label for="income">Penghasilan Utama (<span id="labelPeriode">per Bulan</span>):</label>
+  <input type="text" id="income" placeholder="Contoh: 5.000.000">
+
+  <label for="extraIncome">Penghasilan Tambahan:</label>
+  <input type="text" id="extraIncome" placeholder="Contoh: 1.000.000">
+
+  <button onclick="hitungZakat()">Hitung Zakat</button>
+
+  <div id="hasilZakat"></div>
+</div>
+
+<!-- Hubungkan JS -->
+<script src="script.js"></script>
+</body>
+</html>
