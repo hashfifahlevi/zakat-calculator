@@ -16,10 +16,15 @@
       border-radius: 8px;
       box-shadow: 0 0 8px rgba(0,0,0,0.1);
     }
+    .info-nisab {
+      font-size: 0.75rem;
+      color: #666;
+      margin-top: 0.5rem;
+    }
     input, select, button {
-      margin-top: 8px;
+      margin-top: 0.25rem;
       width: 100%;
-      padding: 8px;
+      padding: 0.5rem;
       font-size: 14px;
       box-sizing: border-box;
     }
@@ -47,11 +52,12 @@
     <option value="tahunan">Tahunan</option>
   </select>
 
-  <label for="income">Penghasilan Utama (<span id="labelPeriode">per Bulan</span>):</label>
+  <label for="income" style="margin-top: 1rem; display: block;">Penghasilan Utama (<span id="labelPeriode">per Bulan</span>):</label>
   <input type="text" id="income" placeholder="Contoh: 5.000.000">
 
-  <label for="extraIncome">Penghasilan Tambahan:</label>
+  <label for="extraIncome" style="margin-top: 1rem; display: block;">Penghasilan Tambahan:</label>
   <input type="text" id="extraIncome" placeholder="Contoh: 1.000.000">
+  <small class="info-nisab">Nisab: <strong>Rp7.140.498/bulan atau Rp85.685.972/tahun</strong><br>(SK Ketua BAZNAS No. 13 tahun 2025)</small>
 
   <button onclick="hitungZakat()">Hitung Zakat</button>
 

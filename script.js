@@ -72,8 +72,7 @@ const nisab = {
     } else {
       hasilDiv.innerHTML = `❌ Tidak Wajib Zakat<br>
         Total Penghasilan: <strong>Rp ${totalIncome.toLocaleString('id-ID')}</strong><br>
-        Penghasilan Anda di bawah nisab:<br> ${period === 'tahunan' ? '<strong>Rp 85.685.972</strong>' : '<strong>Rp 7.140.498</strong>'}.<br>
-        (SK Ketua BAZNAS No. 13 tahun 2025)`;
+        Penghasilan Anda di bawah nisab:<br> ${period === 'tahunan' ? '<strong>Rp 85.685.972</strong>' : '<strong>Rp 7.140.498</strong>'}.`;
     }
   }
   
