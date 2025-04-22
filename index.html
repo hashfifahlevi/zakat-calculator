@@ -2,25 +2,55 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Kalkulator Zakat Penghasilan</title>
+  <title>Kalkulator Zakat</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       background: #f2f2f2;
       padding: 20px;
     }
+
     .zakat-box {
       background: white;
       padding: 20px;
-      max-width: 300px;
+      max-width: 320px;
       border-radius: 8px;
       box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      margin: 0 auto;
     }
-    .info-nisab {
-      font-size: 0.75rem;
-      color: #666;
-      margin-top: 0.5rem;
+
+    .custom-dropdown {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 1rem;
     }
+
+    .custom-dropdown select {
+      appearance: none;
+      width: 100%;
+      font-size: 1.15rem;
+      font-weight: bold;
+      padding: 0.5rem 2rem 0.5rem 0.5rem;
+      border: none;
+      background-color: white;
+      cursor: pointer;
+      border-radius: 8px;
+      box-shadow: 0 0 6px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+
+    .custom-dropdown::after {
+      content: '▼';
+      font-size: 1rem;
+      color: gray;
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
     input, select, button {
       margin-top: 0.25rem;
       width: 100%;
@@ -28,13 +58,22 @@
       font-size: 14px;
       box-sizing: border-box;
     }
+
     button {
       background: #28a745;
       color: white;
       border: none;
       margin-top: 12px;
       cursor: pointer;
+      border-radius: 4px;
     }
+
+    .info-nisab {
+      font-size: 0.75rem;
+      color: #666;
+      margin-top: 0.5rem;
+    }
+
     #hasilZakat {
       margin-top: 15px;
       font-weight: bold;
@@ -43,28 +82,36 @@
 </head>
 <body>
 
-<div class="zakat-box">
-  <h3>Kalkulator Zakat Penghasilan</h3>
+  <div class="zakat-box">
+    <div class="custom-dropdown">
+      <select id="jenisKalkulator" onchange="gantiKalkulator()">
+        <option value="penghasilan" selected>Kalkulator Zakat Penghasilan</option>
+        <option value="fitrah">Kalkulator Zakat Fitrah</option>
+        <option value="fidyah">Kalkulator Fidyah</option>
+      </select>
+    </div>
 
-  <label for="period">Pilih Periode:</label>
-  <select id="period">
-    <option value="bulanan">Bulanan</option>
-    <option value="tahunan">Tahunan</option>
-  </select>
+    <div id="formContainer">
+      <!-- Form Kalkulator Penghasilan -->
+      <label for="period">Pilih Periode:</label>
+      <select id="period" onchange="updateLabelPeriode()">
+        <option value="bulanan">Bulanan</option>
+        <option value="tahunan">Tahunan</option>
+      </select>
 
-  <label for="income" style="margin-top: 1rem; display: block;">Penghasilan Utama (<span id="labelPeriode">per Bulan</span>):</label>
-  <input type="text" id="income" placeholder="Contoh: 5.000.000">
+      <label for="income" style="margin-top: 1rem; display: block;">Penghasilan Utama (<span id="labelPeriode">per Bulan</span>):</label>
+      <input type="text" id="income" placeholder="Contoh: 5.000.000" oninput="formatInputRupiah(this)">
 
-  <label for="extraIncome" style="margin-top: 1rem; display: block;">Penghasilan Tambahan:</label>
-  <input type="text" id="extraIncome" placeholder="Contoh: 1.000.000">
-  <small class="info-nisab">Nisab: <strong>Rp7.140.498/bulan atau Rp85.685.972/tahun</strong><br>(SK Ketua BAZNAS No. 13 tahun 2025)</small>
+      <label for="extraIncome" style="margin-top: 1rem; display: block;">Penghasilan Tambahan:</label>
+      <input type="text" id="extraIncome" placeholder="Contoh: 1.000.000" oninput="formatInputRupiah(this)">
 
-  <button onclick="hitungZakat()">Hitung Zakat</button>
+      <small class="info-nisab">Nisab: <strong>Rp7.140.498/bulan atau Rp85.685.972/tahun</strong><br>(SK Ketua BAZNAS No. 13 tahun 2025)</small>
 
-  <div id="hasilZakat"></div>
-</div>
+      <button onclick="hitungZakat()">Hitung Zakat</button>
+      <div id="hasilZakat"></div>
+    </div>
+  </div>
 
-<!-- Hubungkan JS -->
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
