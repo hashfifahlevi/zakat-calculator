@@ -76,7 +76,7 @@ function hitungZakat() {
 
 function hitungZakatFitrah() {
   const jumlah = parseInt(document.getElementById("jumlahOrang").value) || 0;
-  const tarif = 45000;
+  const tarif = 47000; //adjustable
   const total = jumlah * tarif;
   document.getElementById("hasilZakat").innerHTML =
     `Total zakat fitrah: <strong>Rp${total.toLocaleString('id-ID')}</strong>`;
@@ -84,7 +84,7 @@ function hitungZakatFitrah() {
 
 function hitungFidyah() {
   const hari = parseInt(document.getElementById("hari").value) || 0;
-  const tarif = 40000;
+  const tarif = 60000; //adjustable
   const total = hari * tarif;
   document.getElementById("hasilZakat").innerHTML =
     `Total fidyah yang harus dibayarkan: <strong>Rp${total.toLocaleString('id-ID')}</strong>`;
