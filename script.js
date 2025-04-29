@@ -25,23 +25,21 @@ function gantiKalkulator() {
     `;
   } else if (jenis === "fitrah") {
     container.innerHTML = `
-      <label for="jumlahOrang" style="margin-top: 1rem; display: block;">Jumlah Orang dalam Tanggungan:</label>
-      <input type="number" id="jumlahOrang" placeholder="Contoh: 4" oninput="formatInputRupiah(this)">
-
-      <label for="hargaBeras" style="margin-top: 1rem; display: block;">Harga Beras per Kg (misal Rp15.000):</label>
-      <input type="text" id="hargaBeras" placeholder="Contoh: 15.000" oninput="formatInputRupiah(this)">
-
+      <label for="jumlahOrang">Jumlah Orang dalam Tanggungan:</label>
+      <input type="number" id="jumlahOrang" placeholder="Contoh: 4">
+  
+      <p style="font-size: 0.9rem; color: #666; font-weight: bold;">Ditetapkan: Rp47.000 per orang</p>
+  
       <button onclick="hitungZakatFitrah()">Hitung Zakat Fitrah</button>
       <div id="hasilZakat"></div>
     `;
   } else if (jenis === "fidyah") {
     container.innerHTML = `
-      <label for="hari" style="margin-top: 1rem; display: block;">Jumlah Hari Tidak Puasa:</label>
-      <input type="number" id="hari" placeholder="Contoh: 10" oninput="formatInputRupiah(this)">
-
-      <label for="hargaPorsi" style="margin-top: 1rem; display: block;">Harga Makanan per Porsi (misal Rp25.000):</label>
-      <input type="text" id="hargaPorsi" placeholder="Contoh: 25.000" oninput="formatInputRupiah(this)">
-
+      <label for="hari">Jumlah Hari Tidak Puasa:</label>
+      <input type="number" id="hari" placeholder="Contoh: 10">
+  
+      <p style="font-size: 0.9rem; color: #666; font-weight: bold;">Ditetapkan: Rp60.000 per hari</p>
+  
       <button onclick="hitungFidyah()">Hitung Fidyah</button>
       <div id="hasilZakat"></div>
     `;
@@ -78,14 +76,16 @@ function hitungZakat() {
 
 function hitungZakatFitrah() {
   const jumlah = parseInt(document.getElementById("jumlahOrang").value) || 0;
-  const harga = parseInt(document.getElementById("hargaBeras").value.replace(/\D/g, '')) || 0;
-  const total = jumlah * harga * 2.5;
-  document.getElementById("hasilZakat").innerHTML = `Total zakat fitrah: <strong>Rp${total.toLocaleString('id-ID')}</strong>`;
+  const tarif = 45000;
+  const total = jumlah * tarif;
+  document.getElementById("hasilZakat").innerHTML =
+    `Total zakat fitrah: <strong>Rp${total.toLocaleString('id-ID')}</strong>`;
 }
 
 function hitungFidyah() {
   const hari = parseInt(document.getElementById("hari").value) || 0;
-  const harga = parseInt(document.getElementById("hargaPorsi").value.replace(/\D/g, '')) || 0;
-  const total = hari * harga;
-  document.getElementById("hasilZakat").innerHTML = `Total fidyah yang harus dibayarkan: <strong>Rp${total.toLocaleString('id-ID')}</strong>`;
+  const tarif = 40000;
+  const total = hari * tarif;
+  document.getElementById("hasilZakat").innerHTML =
+    `Total fidyah yang harus dibayarkan: <strong>Rp${total.toLocaleString('id-ID')}</strong>`;
 }
