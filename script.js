@@ -2,7 +2,7 @@ function gantiKalkulator() {
   const jenis = document.getElementById("jenisKalkulator").value;
   const container = document.getElementById("formContainer");
   const hasil = document.getElementById("hasilZakat");
-  hasil.innerHTML = ""; // Bersihkan hasil saat ganti form
+  hasil.innerHTML = "";
 
   if (jenis === "penghasilan") {
     container.innerHTML = `
@@ -47,7 +47,7 @@ function gantiKalkulator() {
 }
 
 function formatInputRupiah(el) {
-  let angka = el.value.replace(/\D/g, ""); // Hapus semua non-digit
+  let angka = el.value.replace(/\D/g, "");
   let formatted = angka.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   el.value = formatted;
 }
